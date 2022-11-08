@@ -1,32 +1,49 @@
 import { OnInit, Component } from '@angular/core';
 import { STUDENTS } from './mock-student-list';
 import { Student } from './Student';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
   selector: 'app-root',
-  template: `
-    
-      <h1>
-        bonjour Gael!
-      </h1>
-    
-  `,
-  styles: []
+  templateUrl: 'app.component.html',
+     styles: []
+
+  
 })
 
 export class AppComponent implements OnInit{
 
-  StudentList: Student[] = STUDENTS;
+  studentList: Student[] = STUDENTS;
+  studentSelected: Student|undefined;
 
   ngOnInit(): void{
 
-    console.table(this.StudentList);
-    console.log(this.StudentList[0].name)
+    console.table(this.studentList);
+    
   }
 
-  selectStudent = (studentName: string)=> {
-    console.log(`vous avez cliqué sur l'etudiant ${studentName}`)
+  selectOneStudent(studentId: string){
+    const student: Student|undefined = this.studentList.find(
+      student => student.id == +studentId
+    );
+
+    if( student ){
+      console.log(`vous avez clique sur l etudiant ${student.name}`);
+      this.studentSelected = student;
+
+    } else{
+      console.log("l'etudiant n'existe pas");
+      this.studentSelected = student;
+    }
   }
+
+
 }
+
+
+
+
+
+
 
