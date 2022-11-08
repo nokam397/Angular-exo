@@ -4,6 +4,7 @@ import { Student } from './Student';
 import { NgForm } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -11,6 +12,7 @@ import { NgForm } from '@angular/forms';
 
   
 })
+
 
 export class AppComponent implements OnInit{
 
@@ -36,7 +38,10 @@ export class AppComponent implements OnInit{
       console.log("l'etudiant n'existe pas");
       this.studentSelected = student;
     }
+
+    
   }
+  
 
 
 }
